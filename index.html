@@ -28,16 +28,28 @@
         </a>
       </li>
     </ul>
+    <h3>CodeSmart People:</h3>
+    <ul>
+      <li v-for="person in people">{{person}}</li>
+    </ul>
   </div>
 
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        greeting: 'Welcome to your Vue.js app!',
+        greeting: 'Welcome, CodeSmart people, to your Vue.js app!',
         docsURL: 'http://vuejs.org/guide/',
         discordURL: 'https://chat.vuejs.org',
-        forumURL: 'http://forum.vuejs.org/'
+        forumURL: 'http://forum.vuejs.org/',
+        people: [
+          'Michael',
+          'Chris',
+          'Andrew',
+          'Luke',
+          'Chandra',
+          'Praveen',
+        ]
       },
       methods: {
         humanizeURL: function (url) {
