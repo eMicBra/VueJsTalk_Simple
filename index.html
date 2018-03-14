@@ -32,11 +32,30 @@
     <ul>
       <li v-for="person in people">{{person}}</li>
     </ul>
+    <h3>Useful resources</h3>
+    <ul>
+      <li is="resource-item" v-for="resource in resources" v-bind:resource-name="resource.name" :resource-url="resource.url"></li>
+    </ul>
   </div>
 
+  <script type="text/template" id="resourceItem">
+      <li><a v-bind:href="resourceUrl" target="_blank">{{resourceName}}</a></li>
+  </script>
   <script>
+
+    var resourceItem = {
+      name: 'resource-item',
+      props: [
+        'resourceName',
+        'resourceUrl'
+        ],
+      template: '#resourceItem'
+    };
     var app = new Vue({
       el: '#app',
+      components: {
+        resourceItem
+      },
       data: {
         greeting: 'Welcome, CodeSmart people, to your Vue.js app!',
         docsURL: 'http://vuejs.org/guide/',
@@ -49,7 +68,12 @@
           'Luke',
           'Chandra',
           'Praveen',
-        ]
+        ],
+        resources: [
+          { name: 'awesome-vue', url: 'https://github.com/vuejs/awesome-vue' },
+          { name: 'Vue.js "Laracasts"', url: 'https://laracasts.com/series/learn-vue-2-step-by-step' },
+          { name: 'Alligator.io--Vue.js', url: 'https://alligator.io/vuejs/' },
+        ],
       },
       methods: {
         humanizeURL: function (url) {
